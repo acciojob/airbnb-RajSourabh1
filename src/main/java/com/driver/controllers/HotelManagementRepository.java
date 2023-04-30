@@ -28,7 +28,7 @@ public class HotelManagementRepository {
         //Incase somebody is trying to add the duplicate hotelName return FAILURE
         //in all other cases return hotelName after successfully adding the hotel to the hotelDb.
 
-        if(hotel==null || hotel.getHotelName() == "")
+        if(hotel==null || hotel.getHotelName() == null)
             return "FAILURE";
 
         if(hotelMap.containsKey(hotel.getHotelName()))
