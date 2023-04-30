@@ -42,6 +42,9 @@ public class HotelManagementRepository {
 
         //You need to add a User Object to the database
         //Assume that user will always be a valid user and return the aadharCardNo of the user
+        if(userMap.containsKey(user.getaadharCardNo()))
+            return 0;
+
         userMap.put(user.getaadharCardNo(),user);
         return user.getaadharCardNo();
     }
@@ -52,7 +55,9 @@ public class HotelManagementRepository {
         //Incase there is a tie return the lexicographically smaller hotelName
         //Incase there is not even a single hotel with atleast 1 facility return "" (empty string)
         List<String> hotelNames = new ArrayList<>();
-        int max = 0;
+        int max = 1;
+        if(hotelMap.size()==0)
+            return "";
         for(Hotel hotel: hotelMap.values()){
             if(hotel.getFacilities().size()>=max)
                 max = hotel.getFacilities().size();
@@ -101,10 +106,10 @@ public class HotelManagementRepository {
     public int getBookings(Integer aadharCard)
     {
         //In this function return the bookings done by a person
-        for(int userId: userBooking.keySet()){
-            if(userId==aadharCard)
-                return userBooking.get(userId);
-        }
+            for (int userId : userBooking.keySet()) {
+                if (userId == aadharCard)
+                    return userBooking.get(userId);
+            }
         return 0;
     }
 
