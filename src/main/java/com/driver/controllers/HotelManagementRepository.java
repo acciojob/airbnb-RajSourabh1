@@ -35,7 +35,7 @@ public class HotelManagementRepository {
             return "FAILURE";
 
         hotelMap.put(hotel.getHotelName(),hotel);
-        return hotel.getHotelName();
+        return "SUCCESS";
     }
 
     public Integer addUser(User user){
